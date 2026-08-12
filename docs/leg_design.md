@@ -60,6 +60,33 @@ A Jack Russell Terrier was used as the geometric reference for the robot's leg d
 | Body length | 460–550 mm |
 | Standing height | 360–430 mm |
 
+### Capstan drive (considered alternative for remote actuation)
+Instead of a rigid mechanical linkage, power is transmitted from a
+motor mounted near the body to the joint using a cable wrapped around
+a drum (capstan), rather than gears or a four-bar linkage.
+
+Advantages:
+- Near-zero backlash compared to gear trains
+- High transmission efficiency, low friction
+- Some inherent compliance — can absorb shock from foot impact
+- Lightweight at the joint (no gearbox needed distally)
+- Fits the remote actuation goal already selected for this project
+
+Disadvantages:
+- Requires careful cable tensioning (too loose = slop, too tight =
+  added friction/wear)
+- Cable stretch/creep over time can introduce position drift
+- Cable is a wear item, will need periodic replacement
+- Routing constraints — cable bend radius limits mechanical layout
+- Meaningfully more complex to prototype than direct-drive or a
+  simple four-bar linkage
+
+**Status:** not used for v1 (direct-drive selected for the first
+testbed). Worth reconsidering for Phase 2+ once remote actuation is
+implemented, as an alternative to the four-bar linkage originally
+proposed.
+
+*Source: [YouTube video reference — capstan drive for legged robots]*
 
 # References
 
@@ -68,3 +95,5 @@ A Jack Russell Terrier was used as the geometric reference for the robot's leg d
 [2] UKC Dogs. *Jack Russell Terrier*. https://www.ukcdogs.com/jack-russell-terrier
 
 [3] Dimensions.com. *Jack Russell Terrier Dimensions*. https://www.dimensions.com/element/jack-russell-terrier
+
+[4] Aaed Musa, *High Precision Speed Reducer Using Rope*. https://www.youtube.com/watch?v=MwIBTbumd1Q
