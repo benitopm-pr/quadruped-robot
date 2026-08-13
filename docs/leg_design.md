@@ -14,6 +14,60 @@ Where:
 
 Once the proportions are known, the physical constraints can be determined.
 
+## Lower leg segment
+
+$$
+L_{\text{lower}} = k_{\text{lower}} \cdot H_{\text{body}}
+$$
+
+Where:
+- H_body = 280 mm
+- k_lower = 0.5
+
+$$
+L_{\text{lower}} = 140 \text{ mm}
+$$
+
+## Upper leg segment
+
+$$
+L_{\text{upper}} = k_{\text{upper}} \cdot H_{\text{body}}
+$$
+
+Where:
+- H_body = 280 mm
+- k_upper = 0.5
+
+$$
+L_{\text{upper}} = 140 \text{ mm}
+$$
+
+*Check: L_lower + L_upper = 140 + 140 = 280 mm = H_body — consistent
+with the approximation that total leg length ≈ H_body.*
+
+## Segment proportion — design rationale
+
+Initial visual estimation from the Jack Russell Terrier reference
+suggested upper:lower ≈ 2:1 (biologically-inspired asymmetry, common
+in real canine anatomy). However, equal segment lengths (k = 0.5 for
+both) were chosen instead, prioritizing engineering practicality over
+strict biological fidelity:
+
+- Simplifies leg kinematics — symmetric segments produce a more
+  predictable, easier-to-derive foot workspace than asymmetric ones.
+- Reduces risk of kinematic singularities or awkward folding
+  configurations that can arise from uneven segment ratios.
+- Matches common practice in real quadruped robots (e.g. MIT Mini
+  Cheetah and several open-source designs use near-equal segment
+  lengths for these same reasons).
+- Biological proportions optimize for muscle/tendon anatomy, which
+  doesn't directly translate to a servo-driven mechanical leg — the
+  reference dog informed target *scale*, not necessarily segment
+  *ratio*.
+
+*Superseded: earlier version used k_lower = 0.33, k_upper = 0.67
+(93 mm / 187 mm), based on the visual 2:1 biological ratio.*
+
 ## Actuator placement and power transmission
 ### Direct drive (Actuator per joint)
 The actuator is placed directly in the joint it controls.
@@ -60,33 +114,6 @@ A Jack Russell Terrier was used as the geometric reference for the robot's leg d
 | Body length | 460–550 mm |
 | Standing height | 360–430 mm |
 
-### Capstan drive (considered alternative for remote actuation)
-Instead of a rigid mechanical linkage, power is transmitted from a
-motor mounted near the body to the joint using a cable wrapped around
-a drum (capstan), rather than gears or a four-bar linkage.
-
-Advantages:
-- Near-zero backlash compared to gear trains
-- High transmission efficiency, low friction
-- Some inherent compliance — can absorb shock from foot impact
-- Lightweight at the joint (no gearbox needed distally)
-- Fits the remote actuation goal already selected for this project
-
-Disadvantages:
-- Requires careful cable tensioning (too loose = slop, too tight =
-  added friction/wear)
-- Cable stretch/creep over time can introduce position drift
-- Cable is a wear item, will need periodic replacement
-- Routing constraints — cable bend radius limits mechanical layout
-- Meaningfully more complex to prototype than direct-drive or a
-  simple four-bar linkage
-
-**Status:** not used for v1 (direct-drive selected for the first
-testbed). Worth reconsidering for Phase 2+ once remote actuation is
-implemented, as an alternative to the four-bar linkage originally
-proposed.
-
-*Source: [YouTube video reference — capstan drive for legged robots]*
 
 # References
 
@@ -96,4 +123,3 @@ proposed.
 
 [3] Dimensions.com. *Jack Russell Terrier Dimensions*. https://www.dimensions.com/element/jack-russell-terrier
 
-[4] Aaed Musa, *High Precision Speed Reducer Using Rope*. https://www.youtube.com/watch?v=MwIBTbumd1Q

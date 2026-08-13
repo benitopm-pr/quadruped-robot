@@ -11,11 +11,49 @@
 - Control: standard PWM, driven via PCA9685
 
 ## Leg torque estimate
-- Joint being budgeted (hip or knee): <your call — see earlier question on which is more load-critical>
-- Lever arm length: <you need a rough leg sketch/dimension first — not yet available>
+- Hip joint: <your call — see earlier question on which is more load-critical>
+- Knee joint: <your call — see earlier question on which is more load-critical>
+- Lever arm length:
+
+## Lower leg segment
+
+$$
+L_{\text{lower}} = k_{\text{lower}} \cdot H_{\text{body}}
+$$
+
+Where:
+- H_body = 280 mm
+- k_lower = 0.33
+
+*Note: k_lower was estimated by comparing segment lengths directly —
+the lower segment (elbow → paw) was judged to be about half the length
+of the upper segment (shoulder → elbow) in the reference proportions.
+With lower:upper ≈ 1:2, lower segment ≈ 1/3 of total leg length.*
+
+$$
+L_{\text{lower}} = 92.4 \text{ mm}
+$$
+
+## Upper leg segment
+
+$$
+L_{\text{upper}} = k_{\text{upper}} \cdot H_{\text{body}}
+$$
+
+Where:
+- H_body = 280 mm
+- k_upper = 0.67
+
+*Note: derived from the same lower:upper ≈ 1:2 ratio — upper segment
+≈ 2/3 of total leg length.*
+
+$$
+L_{\text{upper}} = 187.6 \text{ mm}
+$$
+
 - Estimated load (segment + foot + margin): <depends on materials/scale you haven't picked yet>
-- Safety margin applied to stall torque: <your reasoned fraction, not a lookup — think about duty cycle for a plastic-case hobby servo>
-- Torque required = force × lever arm = <your calculation>
+- Safety margin applied to stall torque: 60%. Since teh servos are for hobbies but barely used with metal gear, i can use more tahn average servo hobbyist project.
+- Torque required = force × lever arm = <blocked on Phase 2 load estimate>
 
 ## Verdict
 <Compare your required torque against stall torque × your safety
